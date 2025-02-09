@@ -1,11 +1,11 @@
 #include "random.hpp"
 
-#include <random>
 #include <limits>
+#include <random>
 
 int rand_int(int min, int max) {
-    static std::random_device rd;  // a seed source for the random number engine
-    static std::mt19937 gen(rd()); // mersenne_twister_engine seeded with rd()
+    static std::random_device          rd;        // a seed source for the random number engine
+    static std::mt19937                gen(rd()); // mersenne_twister_engine seeded with rd()
     std::uniform_int_distribution<int> distribution(min, max);
 
     // Use distribution to transform the random unsigned int
@@ -14,8 +14,8 @@ int rand_int(int min, int max) {
 }
 
 std::size_t rand_interval(std::size_t lo, std::size_t hi) {
-    static std::random_device rd;  // a seed source for the random number engine
-    static std::mt19937 gen(rd()); // mersenne_twister_engine seeded with rd()
+    static std::random_device rd;        // a seed source for the random number engine
+    static std::mt19937       gen(rd()); // mersenne_twister_engine seeded with rd()
     std::uniform_int_distribution<std::size_t> distribution(lo, hi - 1);
 
     // Use distribution to transform the random unsigned int
