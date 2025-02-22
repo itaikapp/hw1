@@ -40,4 +40,5 @@ void deallocate_array(int *arr) { std::free(arr); }
 
 int *generate_random_array(std::size_t size, int min, int max) {
     // TODO: implement this function as well.
+    return nullptr;
 }
