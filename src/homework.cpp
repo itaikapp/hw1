@@ -2,6 +2,7 @@
 #include "io.hpp"
 
 #include <cstdio>
+#include <cstddef>
 
 void print_menu() {
     std::printf("1. print this menu.\n"
@@ -11,7 +12,7 @@ void print_menu() {
                 "5. square root calculation.\n"
                 "6. reverse array.\n"
                 "7. shuffle array.\n"
-                "8. large integer's division check.\n"
+                "8. large integer's deviation check.\n"
                 "9. exit.\n");
 }
 
@@ -43,3 +44,95 @@ void factorization() {
     }
     std::printf("\n");
 }
+
+
+static double power(double base, int exp){
+    if (0 == base && 0 == exp) {
+        return 0.0/0.0;
+    }
+
+    if (exp < 0) {
+        exp = -exp;
+        base = 1 / base;
+    }
+
+    double res = 1;
+    while (exp > 0) {
+        res = res * res;
+        if (exp % 2 == 1) {
+            res = res * base;
+        }
+        exp = exp / 2;
+    }
+    return res;
+}
+
+
+void power_calculation() {
+    std::printf("please enter a base (decimal): ");
+    double base = get_double();
+    std::printf("please enter an exponent (integer): ");
+    int exp = get_int();
+    double res = power(base, exp);
+    std::printf("%lf ^ %d = %lf\n", base, exp, res);
+}
+
+static int log_calc(double base, double n) {
+    if (0 == base && 0 == exp) {
+        return 0.0/0.0;
+    }
+
+    if (exp < 0) {
+        exp = -exp;
+        base = 1 / base;
+    }
+
+    double res = 1;
+    while (exp > 0) {
+        res = res * res;
+        if (exp % 2 == 1) {
+            res = res * base;
+        }
+        exp = exp / 2;
+    }
+    return res;
+}
+
+void log_calculation() {
+    std::printf("please enter a base (decimal): ");
+    double base = get_double();
+    std::printf("please enter a number (decimal): ");
+    double n = get_double();
+    int res = log_calc(base, n);
+    std::printf("log(%lf, %lf) = %d\n", base, n, res);
+}
+
+static int large_number_division_calc(const std::vector<int> &large_int, int divisor) {
+    int reminder = 0;
+    for(std::size_t i = 0; i < large_int.size(); i++) {
+        reminder = reminder * 10;
+        reminder += large_int[i];
+        reminder %= divisor;
+    }
+    return reminder;
+}
+
+static int large_number_division_calc2(const std::vector<int> &large_int, int divisor) {
+    int reminder = 0;
+    for(int n : large_int) {
+        reminder = reminder * 10;
+        reminder += n;
+        reminder %= divisor;
+    }
+    return reminder;
+}
+
+void large_number_division_check() {
+    std::printf("please enter a large positive number (integer) as a divided: ");
+    std::vector<int> large_int = get_large_integer();
+    std::printf("please enter a positive number (decimal) as a divisor: ");
+    int divisor = get_int();
+    int res = large_number_division_calc(large_int, divisor);
+    // std::printf("log(%lf, %lf) = %d\n", base, n, res);
+}
+

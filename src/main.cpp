@@ -12,45 +12,40 @@ int main() {
         int n = get_int();
 
         switch (n) {
-        case 1: {
+        case 1:
             print_menu();
             break;
-        }
-        case 2: {
+
+        case 2:
             factorization();
             break;
-        }
-        case 3: {
+
+        case 3:
+            power_calculation();
+            break;
+
+        case 4:
+            break;
+
+        case 5:
+            break;
+
+        case 6:
 
             break;
-        }
-        case 4: {
 
+        case 7:
             break;
-        }
-        case 5: {
 
+        case 8:
             break;
-        }
-        case 6: {
 
-            break;
-        }
-        case 7: {
-
-            break;
-        }
-        case 8: {
-
-            break;
-        }
-        case 9: {
+        case 9:
             std::printf("bye\n");
             return 0;
-        }
-        default: {
+
+        default:
             std::printf("%d is an invalid selection, please choose a number between 1 to 9\n", n);
-        }
         }
     }
 }
